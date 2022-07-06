@@ -1,6 +1,7 @@
 import Head from "next/head";
-import { PostCard, Categories, PostWidget } from "../components";
-import Image from "next/image";
+import { Categories, PostCard, PostWidget, Header } from "../components";
+
+import { getPosts } from "../services";
 
 const posts = [
   { title: "Mastering React", excerpt: "Learning the Reactjs" },
@@ -10,14 +11,16 @@ const posts = [
   },
 ];
 
-export default function Home() {
+export default function Home({ posts: fetchedPosts }) {
+  console.log(fetchedPosts);
   return (
     <div className="container mx-auto px-10 mb-8">
       <Head>
-        <title>GraphQl CMS Blog</title>
+        <title>CMS Blog</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="grid grid-cols-1 lg:grid-cols-12 ">
+
+      <div className="grid grid-cols-1 lg:grid-cols-12">
         <div className="col-span-1 lg:col-span-8 ">
           {posts.map((post) => (
             <PostCard key={post.title} post={post} />
@@ -33,3 +36,13 @@ export default function Home() {
     </div>
   );
 }
+
+export const getStaticProps = async () => {
+  const posts = (await getPosts() || []);
+  console.log(posts);
+  return {
+    props: {
+      posts,
+    },
+  };
+};
