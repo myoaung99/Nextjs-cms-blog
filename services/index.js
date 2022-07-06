@@ -27,7 +27,9 @@ export const getPosts = async () => {
             }
             categories {
               name
+              slug
             }
+            featurePost
           }
         }
       }

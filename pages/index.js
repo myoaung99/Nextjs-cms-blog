@@ -11,8 +11,8 @@ const posts = [
   },
 ];
 
-export default function Home({ posts: fetchedPosts }) {
-  console.log(fetchedPosts);
+export default function Home({ posts }) {
+
   return (
     <div className="container mx-auto px-10 mb-8">
       <Head>
@@ -23,7 +23,7 @@ export default function Home({ posts: fetchedPosts }) {
       <div className="grid grid-cols-1 lg:grid-cols-12">
         <div className="col-span-1 lg:col-span-8 ">
           {posts.map((post) => (
-            <PostCard key={post.title} post={post} />
+            <PostCard key={post.node.slug} post={post.node} />
           ))}
         </div>
         <div className="col-span-1 lg:col-span-4">
@@ -39,7 +39,7 @@ export default function Home({ posts: fetchedPosts }) {
 
 export const getStaticProps = async () => {
   const posts = (await getPosts() || []);
-  console.log(posts);
+  console.log(posts)
   return {
     props: {
       posts,
