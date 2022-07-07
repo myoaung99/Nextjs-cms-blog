@@ -40,6 +40,40 @@ export const getPosts = async () => {
   return result.postsConnection.edges;
 };
 
+export const getPostDetail = async (slug) => {
+  const query = gql`
+    query getPostDetail($slug: String!) {
+      post(where: { slug: $slug }) {
+        author {
+          bio
+          name
+          id
+          photo {
+            url
+          }
+        }
+        createdAt
+        slug
+        title
+        excerpt
+        featurePhoto {
+          url
+        }
+        categories {
+          name
+          slug
+        }
+        content {
+          raw
+        }
+      }
+    }
+  `;
+
+  const result = await graphcms.request(query, { slug });
+  return result.post;
+};
+
 export const getRecentPosts = async () => {
   const query = gql`
     query GetPostDetails {
@@ -58,13 +92,19 @@ export const getRecentPosts = async () => {
   return result.posts;
 };
 
-export const getSimilarPosts = async () => {
+export const getSimilarPosts = async (
+  currentPostSlug,
+  currentPostCategories
+) => {
   const query = gql`
-    query GetPostDetails($slug: String!, $categories: [String!]) {
+    query GetPostDetails(
+      $currentPostSlug: String!
+      $currentPostCategories: [String!]
+    ) {
       posts(
         where: {
-          slug_not: $slug
-          AND: { categories_some: { slug_in: $categories } }
+          slug_not: $currentPostSlug
+          AND: { categories_some: { slug_in: $currentPostCategories } }
         }
         last: 3
       ) {
@@ -78,7 +118,10 @@ export const getSimilarPosts = async () => {
     }
   `;
 
-  const result = await graphcms.request(query);
+  const result = await graphcms.request(query, {
+    currentPostSlug,
+    currentPostCategories,
+  });
   return result.posts;
 };
 
