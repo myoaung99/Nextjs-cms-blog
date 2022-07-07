@@ -3,14 +3,6 @@ import { Categories, PostCard, PostWidget, Header } from "../components";
 
 import { getPosts } from "../services";
 
-const posts = [
-  { title: "Mastering React", excerpt: "Learning the Reactjs" },
-  {
-    title: "Mastering tailwindcss",
-    excerpt: "Learning the Reactjs with tailwindcss",
-  },
-];
-
 export default function Home({ posts }) {
 
   return (
@@ -28,7 +20,7 @@ export default function Home({ posts }) {
         </div>
         <div className="col-span-1 lg:col-span-4">
           <div className="relative lg:sticky  top-8">
-            <PostWidget />
+            <PostWidget currentPostSlug={null} currentPostCategories={null} />
             <Categories />
           </div>
         </div>
@@ -39,7 +31,6 @@ export default function Home({ posts }) {
 
 export const getStaticProps = async () => {
   const posts = (await getPosts() || []);
-  console.log(posts)
   return {
     props: {
       posts,

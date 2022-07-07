@@ -24,30 +24,30 @@ const PostWidget = ({currentPostSlug, currentPostCategories}) => {
 
     return <div>
         <div className='bg-white rounded-lg shadow-lg p-5 ml-4'>
-            <div>
-                <h2 className='font-semibold text-xl mb-3'>{currentPostSlug ? 'Related Posts' : 'Recent Posts'}</h2>
-                {relatedPosts.map((relatedPost) => {
-                    return (
-                        <>
-                            <div className='flex items-end mb-3' key={relatedPost.slug}>
-                                <Image src={relatedPost.featurePhoto.url} className='rounded-full' width={40}
-                                       height={40} alt={relatedPost.title}/>
-                                <div className='ml-4'>
+            <h2 className='font-semibold text-xl mb-3'>{currentPostSlug ? 'Related Posts' : 'Recent Posts'}</h2>
+            {relatedPosts.map((relatedPost) => {
+                return (
+                    <>
+                        <div className='flex items-end mb-3' key={relatedPost.slug}>
+                            <Image src={relatedPost.featurePhoto.url} className='rounded-full' width={40}
+                                   height={40} alt={relatedPost.title}/>
+                            <div className='ml-4'>
                             <span
                                 className='text-gray-500 text-xs'>
-                                {moment(relatedPost.createdAt).format('MMMM/DD/YYYY')}
+                                {moment(relatedPost.createdAt).format('MMMM DD, YYYY')}
                             </span>
-                                    <Link href={`post/${relatedPost.slug}`}>
-                                        <p className='text-gray-700 text-lg cursor-pointer hover:text-pink-500 transition duration-500'>
-                                            {relatedPost.title}
-                                        </p>
-                                    </Link>
-                                </div>
+                                <Link href={`post/${relatedPost.slug}`}>
+                                    <p className='text-gray-700 text-lg cursor-pointer hover:text-pink-500
+                                        transition duration-500'>
+                                        {relatedPost.title}
+                                    </p>
+                                </Link>
                             </div>
-                        </>
-                    )
-                })}
-            </div>
+                        </div>
+                    </>
+                )
+            })}
+
         </div>
     </div>;
 };

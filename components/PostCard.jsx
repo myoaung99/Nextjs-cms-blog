@@ -18,30 +18,33 @@ const PostCard = ({post}) => {
                        src={img.url}
                        alt={post.title}
                 />
-                <div>
-                    <Link href={`post/${post.slug}`}>
-                        <h2 className="transition duration-700 text-center text-3xl font-semibold hover:cursor-pointer
+
+                <Link href={`post/${post.slug}`}>
+                    <h2 className="transition duration-700 text-center text-3xl font-semibold hover:cursor-pointer
                         hover:text-pink-700 my-5">
-                            {post.title}
-                        </h2>
-                    </Link>
-                </div>
+                        {post.title}
+                    </h2>
+                </Link>
 
-                <div className='flex text-center mt-4 justify-center items-center'>
-                    <div>
-                        <Image className='rounded-full' src={authorPhoto.url} alt={authorName} width={30} height={30}/>
+
+                <div className='flex justify-center items-center'>
+                    <div className='flex text-center mr-8 justify-center items-center'>
+                        <div>
+                            <Image className='rounded-full' src={authorPhoto.url} alt={authorName} width={30}
+                                   height={30}/>
+                        </div>
+                        <h2 className='ml-2 text-sm'>{authorName}</h2>
                     </div>
-                    <h2 className='ml-3 text-sm'>{authorName}</h2>
+
+                    <div className='flex items-center justify-center'>
+                        <AiOutlineCalendar className='text-pink-600'/>
+                        <span className='text-sm ml-2'>{moment(date).format('MMM.DD.YYYY')}</span>
+                    </div>
                 </div>
 
-                <div className='flex items-center justify-center mt-1'>
-                    <AiOutlineCalendar className='text-pink-600'/>
-                    <span className='text-sm ml-2'>{moment(date).format('MMM.DD.YYYY')}</span>
-                </div>
 
-                <div>
-                    <p className='px-5 mt-8 text-gray-700 text-justify'>{post.excerpt}</p>
-                </div>
+                <p className='px-5 mt-8 text-gray-700 text-justify'>{post.excerpt}</p>
+
 
                 <div className='text-center mt-8'>
                     <Link href={`/post/${post.slug}`}>
