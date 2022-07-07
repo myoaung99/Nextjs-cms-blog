@@ -5,15 +5,14 @@ import moment from "moment";
 import {AiOutlineCalendar} from 'react-icons/ai'
 
 const PostCard = ({post}) => {
-
-    const {featurePhoto: img} = post;
-    const {photo: authorPhoto, name: authorName} = post.author;
-    const {createdAt: date} = post;
-
     console.log(post);
+    const {featurePhoto: img, createdAt: date, author} = post;
+    const {photo: authorPhoto, name: authorName} = author;
+
+
     return (
         <div className="bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8">
-            <div className="relative overflow-hidden shadow-md pb-36 mb-6">
+            <div className="relative overflow-hidden shadow-md pb-16 mb-6">
                 <Image width={730} height={320}
                        className='object-center h-80 absolute w-full object-cover shadow-lg rounded-t-lg lg:rounded-lg'
                        src={img.url}
@@ -21,8 +20,8 @@ const PostCard = ({post}) => {
                 />
                 <div>
                     <Link href={`post/${post.slug}`}>
-                        <h2 className="transition duration-700 text-center text-xl font-semibold hover:cursor-pointer
-                        hover:text-pink-700 ">
+                        <h2 className="transition duration-700 text-center text-3xl font-semibold hover:cursor-pointer
+                        hover:text-pink-700 my-5">
                             {post.title}
                         </h2>
                     </Link>

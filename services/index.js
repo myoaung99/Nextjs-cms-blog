@@ -6,7 +6,7 @@ const graphcms = new GraphQLClient(url);
 
 export const getPosts = async () => {
   const query = gql`
-    {
+    query MyQuery{
       postsConnection {
         edges {
           node {
@@ -39,3 +39,45 @@ export const getPosts = async () => {
   const result = await graphcms.request(query);
   return result.postsConnection.edges;
 };
+
+export const getRecentPosts = async () => {
+  const query = gql`
+  query GetPostDetails(){
+    posts(
+      orderBy: createdAt_ASC,
+      last: 3
+    ){
+      title
+      featurePhoto{
+        url
+      }
+      createdAt
+      slug
+    }
+  }
+  `;
+
+  const result = await graphcms.request(query);
+  return result.posts;
+}
+
+export const getSimilarPosts = async () => {
+  const query = gql`
+    query GetPostDetails($slug: String!, $categories: [String!]){
+      posts(
+        where: {slug_not: $slug, AND: {categories_some: {slug_in: $categories}}}
+        last: 3
+      ){
+        title
+        featurePhoto{
+          url
+        }
+        createdAt
+        slug
+      }
+    }
+  `;
+
+  const result = await graphcms.request(query);
+  return result.posts;
+}
