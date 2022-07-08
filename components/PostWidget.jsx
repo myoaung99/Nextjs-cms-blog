@@ -43,7 +43,7 @@ const PostWidget = ({ currentPostSlug, currentPostCategories }) => {
                   </span>
                   <Link href={`post/${relatedPost.slug}`}>
                     <p
-                      className="text-gray-700 text-lg cursor-pointer hover:text-pink-500
+                      className="text-gray-700 text-xs cursor-pointer hover:text-pink-500
                                         transition duration-500"
                     >
                       {relatedPost.title}
