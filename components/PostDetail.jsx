@@ -52,7 +52,7 @@ const PostDetail = ({post}) => {
     };
 
 
-    return <div className='bg-white lg:p-8 rounded-lg pb-10 shadow-lg'>
+    return <div className='lg:p-8 rounded-lg pb-10 shadow-lg' style={{backgroundColor: '#EAF6F6'}}>
         <div className='overline-hidden relative'>
             <Image width={800} height={520} className='object-top lg:object-center lg:object-cover rounded-t-lg'
                    src={post.featurePhoto.url} alt={post.featurePhoto.title}/>

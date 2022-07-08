@@ -11,20 +11,23 @@ const PostCard = ({post}) => {
 
 
     return (
-        <div className="bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8">
-            <div className="relative overflow-hidden shadow-md pb-16 mb-6">
-                <Image width={730} height={320}
+        <div className=" shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8" style={{backgroundColor: '#EAF6F6'}}>
+            <div className="rounded-lg relative overflow-hidden shadow-md pb-16 mb-6">
+                <Image width={740} height={320}
                        className='object-center h-80 absolute w-full object-cover shadow-lg rounded-t-lg lg:rounded-lg'
                        src={img.url}
                        alt={post.title}
                 />
 
-                <Link href={`post/${post.slug}`}>
-                    <h2 className="transition duration-700 text-center text-3xl font-semibold hover:cursor-pointer
-                        hover:text-pink-700 my-5">
-                        {post.title}
-                    </h2>
-                </Link>
+
+                    <Link href={`post/${post.slug}`}>
+                        <h2 className="transition duration-700 text-center text-3xl font-semibold hover:cursor-pointer
+                        hover:text-rose-700 my-5">
+                            {post.title}
+                        </h2>
+                    </Link>
+
+
 
 
                 <div className='flex justify-center items-center'>
@@ -37,7 +40,7 @@ const PostCard = ({post}) => {
                     </div>
 
                     <div className='flex items-center justify-center'>
-                        <AiOutlineCalendar className='text-pink-600'/>
+                        <AiOutlineCalendar className='text-rose-500'/>
                         <span className='text-sm ml-2'>{moment(date).format('MMM.DD.YYYY')}</span>
                     </div>
                 </div>
@@ -48,8 +51,8 @@ const PostCard = ({post}) => {
 
                 <div className='text-center mt-8'>
                     <Link href={`/post/${post.slug}`}>
-                        <button className='transition duration-500 cursor-pointer hover:-translate-y-1 hover:bg-pink-700
-                        bg-pink-600 text-white py-2 px-4 rounded-full'>Continue reading
+                        <button className='transition duration-500 cursor-pointer hover:-translate-y-1 hover:bg-rose-700
+                        bg-rose-600 text-white py-2 px-4 rounded-full'>Continue reading
                         </button>
                     </Link>
                 </div>

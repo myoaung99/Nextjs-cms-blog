@@ -11,10 +11,10 @@ function Header() {
 
   return (
     <header className="container mx-auto px-10 mb-8">
-      <div className="w-full inline-block py-8 border-b border-b-sky-500">
+      <div className="w-full inline-block py-8 border-b border-b-emerald-500">
         <div className="md:float-left block">
           <Link href="/">
-            <span className="text-white text-4xl font-black cursor-pointer ">
+            <span className="text-gray-200 text-4xl text-gray-800 font-black cursor-pointer ">
               Graph CMS
             </span>
           </Link>
@@ -23,7 +23,7 @@ function Header() {
         <div className="hidden md:contents md:float-left">
           {categories.map((category) => (
             <Link key={category.slug} href={`/category/${category.slug}`}>
-              <span className="text-white cursor-pointer px-2 mt-2 ml-2 md:float-right align-middle ">
+              <span className="text-gray-200 cursor-pointer px-2 mt-2 ml-2 md:float-right align-middle ">
                 {category.name}
               </span>
             </Link>

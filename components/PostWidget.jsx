@@ -21,8 +21,8 @@ const PostWidget = ({ currentPostSlug, currentPostCategories }) => {
   }, [currentPostSlug, currentPostCategories]);
 
   return (
-    <div>
-      <div className="bg-white rounded-lg shadow-lg p-5 lg:ml-4">
+    <div >
+      <div className="rounded-lg shadow-lg p-5 lg:ml-4" style={{backgroundColor: '#EAF6F6'}}>
         <h2 className="font-semibold text-xl mb-3">
           {currentPostSlug ? "Related Posts" : "Recent Posts"}
         </h2>
@@ -43,7 +43,7 @@ const PostWidget = ({ currentPostSlug, currentPostCategories }) => {
                   </span>
                   <Link href={`/post/${relatedPost.slug}`}>
                     <p
-                      className="text-gray-700 text-xs cursor-pointer hover:text-pink-500
+                      className="text-gray-700 text-xs cursor-pointer hover:text-rose-500
                                         transition duration-500"
                     >
                       {relatedPost.title}

@@ -191,3 +191,35 @@ export const getFeaturedPosts = async () => {
 
   return result.posts;
 };
+
+export const getCategoryPosts = async (slug) => {
+  const query = gql`
+    query GetCategoryPost($slug: String!) {
+      posts(where: {categories_some :{slug:  $slug}}) {
+        author {
+          bio
+          name
+          id
+          photo {
+            url
+          }
+        }
+        createdAt
+        slug
+        title
+        excerpt
+        featurePhoto {
+          url
+        }
+        categories {
+          name
+          slug
+        }
+        featurePost
+      }
+    }
+  `;
+
+  const result = await graphcms.request(query, {slug});
+  return result.posts;
+};
