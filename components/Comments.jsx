@@ -4,7 +4,7 @@ import {} from "html-react-parser"
 import moment from "moment";
 
 const Comments = ({slug}) => {
-    console.log("Comments", slug)
+
     const [comments, setComments] = useState([]);
 
     useEffect(() => {

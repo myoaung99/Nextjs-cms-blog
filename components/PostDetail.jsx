@@ -72,7 +72,7 @@ const PostDetail = ({post}) => {
             </div>
         </div>
         <h1 className='text-3xl font-semibold mt-8 mb-5'>{post.title}</h1>
-        <dvi>
+        <div>
             {post.content.raw.children.map((typeObj, index) => {
                 const textChildren = typeObj.children.map((item, itemIndex) => getContentFragment(itemIndex, item.text, item));
                 // ဒုတိယ loop မှာ plain text က getContentFragment ထဲကို ဝင်သွားတယ် TypeObj မပါတဲ့အတွက် <h1>/<h2>/<h3> စတဲ့ Elementtype အမျိုးအစားတွေ
@@ -86,7 +86,7 @@ const PostDetail = ({post}) => {
                 // tag ရယ် passing လုပ်လိုက်တဲ့ modified children text ကို ပေါင်းပြီး JSX အဖြစ် return ပြန်ပေးတာကို tag တစ်ခုခြင်းစီ render လုပ်တာတယ်
                 return getContentFragment(index, textChildren, typeObj, typeObj.type);
             })}
-        </dvi>
+        </div>
     </div>;
 };
 
