@@ -1,4 +1,5 @@
 import { gql, GraphQLClient } from "graphql-request";
+import slug from "../pages/post/[slug]";
 
 const url = `https://api-ap-northeast-1.graphcms.com/v2/${process.env.id}/master`;
 
@@ -150,3 +151,43 @@ export const postComment = async (comment) => {
 
   return response.json();
 }
+
+export const getComments = async (slug) => {
+  const query = gql`
+    query GetComments($slug: String!) {
+      comments(where: {post: {slug: $slug}}) {
+        name
+        createdAt
+        comment
+      }
+    }
+     `;
+
+  const result = await graphcms.request(query, {slug});
+  return result.comments;
+}
+
+export const getFeaturedPosts = async () => {
+  const query = gql`
+    query GetCategoryPost() {
+      posts(where: {featurePost: true}) {
+        author {
+          name
+          photo {
+            url
+          }
+        }
+        featurePhoto {
+          url
+        }
+        title
+        slug
+        createdAt
+      }
+    }
+  `;
+
+  const result = await graphcms.request(query);
+
+  return result.posts;
+};

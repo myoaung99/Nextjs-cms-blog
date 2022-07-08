@@ -41,7 +41,7 @@ const PostWidget = ({ currentPostSlug, currentPostCategories }) => {
                   <span className="text-gray-500 text-xs">
                     {moment(relatedPost.createdAt).format("MMMM DD, YYYY")}
                   </span>
-                  <Link href={`post/${relatedPost.slug}`}>
+                  <Link href={`/post/${relatedPost.slug}`}>
                     <p
                       className="text-gray-700 text-xs cursor-pointer hover:text-pink-500
                                         transition duration-500"

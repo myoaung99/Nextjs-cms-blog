@@ -5,7 +5,7 @@ import moment from "moment";
 import {AiOutlineCalendar} from 'react-icons/ai'
 
 const PostCard = ({post}) => {
-    console.log(post);
+
     const {featurePhoto: img, createdAt: date, author} = post;
     const {photo: authorPhoto, name: authorName} = author;
 

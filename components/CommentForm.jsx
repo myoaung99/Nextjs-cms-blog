@@ -63,7 +63,7 @@ const CommentForm = ({slug}) => {
             Leave a comment
         </h2>
 
-        <form className="pt-2" onSubmit={formSubmitHandler}>
+        <form className="pt-8" onSubmit={formSubmitHandler}>
             <div className="grid grid-cols-1 gap-4 mb-4">
                 <textarea ref={commentRef} placeholder="Comment" id="comment" name="comment"
                           className="text-gray-700 text-sm form-control p-4 border border-gray-200 rounded-lg "
