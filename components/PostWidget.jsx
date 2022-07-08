@@ -22,7 +22,7 @@ const PostWidget = ({ currentPostSlug, currentPostCategories }) => {
 
   return (
     <div>
-      <div className="bg-white rounded-lg shadow-lg p-5 ml-4">
+      <div className="bg-white rounded-lg shadow-lg p-5 lg:ml-4">
         <h2 className="font-semibold text-xl mb-3">
           {currentPostSlug ? "Related Posts" : "Recent Posts"}
         </h2>
