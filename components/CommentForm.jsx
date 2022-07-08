@@ -1,4 +1,5 @@
-import React, {useState, useEfffect, useRef} from "react";
+import React, {useState, useEffect, useRef} from "react";
+import {postComment} from '../services'
 
 const CommentForm = ({slug}) => {
     const [error, setError] = useState(null);
@@ -7,20 +8,59 @@ const CommentForm = ({slug}) => {
     const commentRef = useRef();
     const nameRef = useRef();
     const emailRef = useRef();
-    const storeRef = useRef();
+    const storeDataRef = useRef();
 
-    const formSubmitHandler = (event) => {
+
+
+    const formSubmitHandler = async (event) => {
         event.preventDefault();
 
         const enteredComment = commentRef.current.value;
         const enteredName = nameRef.current.value;
         const enteredEmail = emailRef.current.value;
+        const isStore = storeDataRef.current.checked;
 
-        console.log(enteredComment, enteredName, enteredEmail);
+        if (!enteredComment || !enteredName || !enteredEmail || !enteredComment.trim().length ||
+            !enteredName.trim().length || !enteredEmail.includes('@')) {
+            setError(true);
+            return;
+        }
+
+        const commentObj = {
+            name: enteredName,
+            email: enteredEmail,
+            comment: enteredComment,
+            slug,
+        }
+
+        if(isStore === true){
+            window.localStorage.setItem('CMS_BLOG_DATA', JSON.stringify({name: enteredName, email: enteredEmail}));
+        }else{
+            window.localStorage.removeItem('CMS_BLOG_DATA');
+        }
+
+        postComment(commentObj).then(()=> {
+            setShowSuccess(true);
+
+            setTimeout(()=> {
+                setShowSuccess(false);
+            }, 3000)
+        })
+
+
+        console.log(enteredComment, enteredName, enteredEmail, slug);
     }
+
+    useEffect(()=>{
+        const data = window.localStorage.getItem('CMS_BLOG_DATA');
+        const parsedData = JSON.parse(data)
+        nameRef.current.value = parsedData.name
+        emailRef.current.value = parsedData.email
+    },[]);
+
     return <div className="bg-white rounded-lg shadow-lg mb-8 p-8 pb-12">
         <h2 className="font-semibold text-xl mb-3">
-            Comment
+            Leave a comment
         </h2>
 
         <form className="pt-2" onSubmit={formSubmitHandler}>
@@ -35,10 +75,15 @@ const CommentForm = ({slug}) => {
                 <input ref={emailRef} placeholder="Email" id="email" name="email"
                        className="text-gray-700 text-sm form-control px-4 py-1 border border-gray-200 rounded-lg "/>
             </div>
+
+            <div className="flex items-center">
+                <input className='inline-block' ref={storeDataRef} id="storeData" name="storeData" type="checkbox" defaultChecked={true} />
+                <label htmlFor="storeData" className="text-xs text-gray-700 ml-2 cursor-pointer hover:text-pink-700">Remember me</label>
+            </div>
             {error && <p className='text-red-700 text-xs pl-4 mt-2 '>All fields are required !</p>}
 
 
-            <div className='mt-8 flex items-center justify-between'>
+            <div className='mt-6 flex items-center justify-between'>
                 <button
                     className='bg-pink-700 px-4 py-1 rounded-3xl text-white text-sm cursor-pointer hover:bg-indigo-700 transition duration-500 ease  '>Post
                     Comment

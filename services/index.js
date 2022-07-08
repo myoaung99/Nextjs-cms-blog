@@ -138,3 +138,15 @@ export const getCategories = async () => {
   const result = await graphcms.request(query);
   return result.categories;
 };
+
+export const postComment = async (comment) => {
+  const response = await fetch('/api/comment', {
+    method: 'POST',
+    body: JSON.stringify(comment),
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+
+  return response.json();
+}
