@@ -55,7 +55,7 @@ const PostDetail = ({post}) => {
     return <div className='lg:p-8 rounded-lg pb-10 shadow-lg' style={{backgroundColor: 'rgb(208 250 250)'}}>
         <div className='overline-hidden relative'>
             <Image width={800} height={520} className='object-top lg:object-center lg:object-cover rounded-t-lg'
-                   src={post.featurePhoto.url} alt={post.featurePhoto.title}/>
+                   src={post.featurePhoto.url} alt={post.title}/>
         </div>
         <div className='flex justify-center items-center'>
             <div className='flex text-center mr-8 justify-center items-center'>

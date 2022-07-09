@@ -11,6 +11,9 @@ export default function Home({ posts }) {
       <Head>
         <title>Home</title>
         <link rel="icon" href="/favicon.ico" />
+          <meta name="description" content="Myo Myint Aung's blog website that feature frontend framework like React JS
+          and Next JS"/>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       </Head>
 
       <FeaturedSection/>
