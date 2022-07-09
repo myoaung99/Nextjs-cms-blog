@@ -14,11 +14,8 @@ import {getFeaturedPosts, getPostDetail} from "../../services";
 import Head from "next/head";
 
 const PostDetailScreen = ({ post }) => {
-
   return (
       <>
-
-
         {!post && <Overlay/>}
         {post && (
             <>
@@ -74,5 +71,7 @@ export const getStaticProps = async (context) => {
     props: {
       post,
     },
+
+    revalidate: 30000
   };
 };

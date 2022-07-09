@@ -28,7 +28,7 @@ const PostCard = ({post}) => {
                 </Link>
 
 
-                <div className='flex-col md:flex-row  justify-center items-center '>
+                <div className='flex flex-col  md:flex-row justify-center items-center'>
                     <div className='flex text-center mr-8 justify-center items-center'>
                         <div>
                             <Image className='rounded-full' src={authorPhoto.url} alt={authorName} width={30}
@@ -36,7 +36,6 @@ const PostCard = ({post}) => {
                         </div>
                         <h2 className='ml-2 text-sm'>{authorName}</h2>
                     </div>
-
                     <div className='flex items-center justify-center'>
                         <AiOutlineCalendar className='text-rose-500'/>
                         <span className='text-sm ml-2'>{moment(date).format('MMM.DD.YYYY')}</span>

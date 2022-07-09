@@ -1,7 +1,6 @@
 import React from "react";
 import {Categories, PostCard, PostWidget} from "../../components";
-import {getCategoryPosts, getFeaturedPosts, getPosts} from "../../services";
-import Modal from "../../components/Modal";
+import {getCategories, getCategoryPosts, getFeaturedPosts, getPosts} from "../../services";
 import Overlay from "../../components/Modal";
 
 const Category = ({posts})=>{
@@ -23,20 +22,15 @@ const Category = ({posts})=>{
             </div>  </div>)}
         </>
     )
-
-
-
-
 }
 
 export default Category;
 
-export const getStaticPaths = () =>{
-
+export const getStaticPaths = async () =>{
     return {
         paths: [],
         fallback: true,
-    }
+    };
 }
 
 export const getStaticProps = async (context) => {
@@ -46,5 +40,6 @@ export const getStaticProps = async (context) => {
         props: {
             posts,
         },
+        revalidate: 30000
     };
 };
