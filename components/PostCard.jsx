@@ -11,7 +11,7 @@ const PostCard = ({post}) => {
 
 
     return (
-        <div className=" shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8" style={{backgroundColor: '#EAF6F6'}}>
+        <div className=" shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8" style={{backgroundColor: 'rgb(208 250 250)'}}>
             <div className="rounded-lg relative overflow-hidden shadow-md pb-16 mb-6">
                 <Image width={740} height={320}
                        className='object-center h-80 absolute w-full object-cover shadow-lg rounded-t-lg lg:rounded-lg'

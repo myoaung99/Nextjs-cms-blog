@@ -215,7 +215,7 @@ export const getCategoryPosts = async (slug) => {
           name
           slug
         }
-        featurePost
+        
       }
     }
   `;

@@ -1,6 +1,6 @@
 import React from "react";
 import {Categories, PostCard, PostWidget} from "../../components";
-import {getCategoryPosts, getPosts} from "../../services";
+import {getCategoryPosts, getFeaturedPosts, getPosts} from "../../services";
 
 const Category = ({posts})=>{
     return <div className="container mx-auto px-5 lg:px-10 mb-8">
@@ -32,9 +32,7 @@ export const getStaticPaths = () =>{
 
 export const getStaticProps = async (context) => {
     const {slug} = context.params;
-    console.log(slug);
     const posts = (await getCategoryPosts(slug) || []);
-    console.log(posts)
     return {
         props: {
             posts,

@@ -14,7 +14,7 @@ function Header() {
       <div className="w-full inline-block py-8 border-b border-b-emerald-500">
         <div className="md:float-left block">
           <Link href="/">
-            <span className="text-gray-200 text-4xl text-gray-800 font-black cursor-pointer ">
+            <span className="text-gray-200 text-4xl font-black cursor-pointer ">
               Graph CMS
             </span>
           </Link>
