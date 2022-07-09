@@ -59,7 +59,7 @@ export const getStaticPaths = async () => {
   const featuredPosts = await getFeaturedPosts();
   const paths = featuredPosts.map((featuredPost)=>`/post/${featuredPost.slug}`)
   return {
-    paths: paths,
+    paths,
     fallback: true,
   };
 };

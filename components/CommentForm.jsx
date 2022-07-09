@@ -46,16 +46,16 @@ const CommentForm = ({slug}) => {
                 setShowSuccess(false);
             }, 3000)
         })
-
-
-
     }
 
     useEffect(()=>{
         const data = window.localStorage.getItem('CMS_BLOG_DATA');
-        const parsedData = JSON.parse(data)
-        nameRef.current.value = parsedData.name
-        emailRef.current.value = parsedData.email
+        if(data){
+            const parsedData = JSON.parse(data);
+            nameRef.current.value = parsedData.name
+            emailRef.current.value = parsedData.email
+        }
+
     },[]);
 
     return <div className="rounded-lg shadow-lg mb-8 p-8 pb-12" style={{backgroundColor: 'rgb(208 250 250)'}}>
