@@ -48,15 +48,15 @@ const CommentForm = ({slug}) => {
         })
     }
 
-    useEffect(()=>{
-        const data = window.localStorage.getItem('CMS_BLOG_DATA');
-        if(data){
-            const parsedData = JSON.parse(data);
-            nameRef.current.value = parsedData.name
-            emailRef.current.value = parsedData.email
-        }
-
-    },[]);
+    // useEffect(()=>{
+    //     const data = window.localStorage.getItem('CMS_BLOG_DATA');
+    //     if(data){
+    //         const parsedData = JSON.parse(data);
+    //         nameRef.current.value = parsedData.name
+    //         emailRef.current.value = parsedData.email
+    //     }
+    //
+    // },[]);
 
     return <div className="rounded-lg shadow-lg mb-8 p-8 pb-12" style={{backgroundColor: 'rgb(208 250 250)'}}>
         <h2 className="font-semibold text-xl mb-3">
