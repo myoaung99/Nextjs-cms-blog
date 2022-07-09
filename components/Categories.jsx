@@ -6,7 +6,10 @@ const Categories = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    getCategories().then((categories) => setCategories(categories));
+    getCategories().then((response) => {
+
+      setCategories(response)
+    });
   }, []);
 
   return (
