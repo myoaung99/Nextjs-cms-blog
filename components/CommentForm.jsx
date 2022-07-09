@@ -48,7 +48,7 @@ const CommentForm = ({slug}) => {
         })
 
 
-        console.log(enteredComment, enteredName, enteredEmail, slug);
+
     }
 
     useEffect(()=>{
@@ -58,7 +58,7 @@ const CommentForm = ({slug}) => {
         emailRef.current.value = parsedData.email
     },[]);
 
-    return <div className="bg-white rounded-lg shadow-lg mb-8 p-8 pb-12">
+    return <div className="rounded-lg shadow-lg mb-8 p-8 pb-12" style={{backgroundColor: 'rgb(208 250 250)'}}>
         <h2 className="font-semibold text-xl mb-3">
             Leave a comment
         </h2>
@@ -88,7 +88,7 @@ const CommentForm = ({slug}) => {
                     className='bg-pink-700 px-4 py-1 rounded-3xl text-white text-sm cursor-pointer hover:bg-indigo-700 transition duration-500 ease  '>Post
                     Comment
                 </button>
-                {showSuccess && <p className='text-green-700 text-xs'>Success</p>}
+                {showSuccess && <p className='text-green-700 text-xs'>Sending your comment to author for review.</p>}
             </div>
 
         </form>

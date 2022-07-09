@@ -11,26 +11,24 @@ const PostCard = ({post}) => {
 
 
     return (
-        <div className=" shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8" style={{backgroundColor: 'rgb(208 250 250)'}}>
-            <div className="rounded-lg relative overflow-hidden shadow-md pb-16 mb-6">
-                <Image width={740} height={320}
+        <div className=" shadow-lg rounded-lg p-0 lg:p-8 md:pb-12 mb-8" style={{backgroundColor: 'rgb(208 250 250)'}}>
+            <div className="rounded-lg relative overflow-hidden shadow-md pb-10 md:pb-16 mb-6">
+                <Image width={740} height={520}
                        className='object-center h-80 absolute w-full object-cover shadow-lg rounded-t-lg lg:rounded-lg'
                        src={img.url}
                        alt={post.title}
                 />
 
 
-                    <Link href={`post/${post.slug}`}>
-                        <h2 className="transition duration-700 text-center text-3xl font-semibold hover:cursor-pointer
+                <Link href={`post/${post.slug}`}>
+                    <h2 className="transition duration-700 text-center text-3xl font-semibold hover:cursor-pointer
                         hover:text-rose-700 my-5">
-                            {post.title}
-                        </h2>
-                    </Link>
+                        {post.title}
+                    </h2>
+                </Link>
 
 
-
-
-                <div className='flex justify-center items-center'>
+                <div className='flex-col md:flex-row  justify-center items-center '>
                     <div className='flex text-center mr-8 justify-center items-center'>
                         <div>
                             <Image className='rounded-full' src={authorPhoto.url} alt={authorName} width={30}

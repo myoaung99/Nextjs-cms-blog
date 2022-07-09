@@ -15,7 +15,7 @@ function Header() {
         <div className="md:float-left block">
           <Link href="/">
             <span className="text-gray-200 text-4xl font-black cursor-pointer ">
-              Graph CMS
+              CMS Blog
             </span>
           </Link>
         </div>
