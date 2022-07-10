@@ -71,22 +71,25 @@ const PostDetail = ({post}) => {
                 <span className='text-xs md:text-sm ml-2'>{moment(post.createdAt).format('MMM.DD.YYYY')}</span>
             </div>
         </div>
-        <h1 className='text-3xl font-semibold mt-8 mb-5'>{post.title}</h1>
-        <div>
-            {post.content.raw.children.map((typeObj, index) => {
-                const textChildren = typeObj.children.map((item, itemIndex) => getContentFragment(itemIndex, item.text, item));
-                // ဒုတိယ loop မှာ plain text က getContentFragment ထဲကို ဝင်သွားတယ် TypeObj မပါတဲ့အတွက် <h1>/<h2>/<h3> စတဲ့ Elementtype အမျိုးအစားတွေ
-                // return ပြန်မပေးပဲ
-                // bold/italic/underline စတဲ့ modified လုပ်ထားတဲ့ modifiedText ကိုပဲ ပြန်ပေးလိုက်တယ်
-                // အဲ့လို ပြန်လာတာဟာ map function ကို ထပ်ဖြတ်ရတဲ့အတွက် array ပြောင်းသွားတယ်
+        <div className="px-5">
+            <h1 className='text-3xl font-semibold mt-8 mb-5'>{post.title}</h1>
+            <div>
+                {post.content.raw.children.map((typeObj, index) => {
+                    const textChildren = typeObj.children.map((item, itemIndex) => getContentFragment(itemIndex, item.text, item));
+                    // ဒုတိယ loop မှာ plain text က getContentFragment ထဲကို ဝင်သွားတယ် TypeObj မပါတဲ့အတွက် <h1>/<h2>/<h3> စတဲ့ Element type အမျိုးအစားတွေ
+                    // return ပြန်မပေးပဲ
+                    // bold/italic/underline စတဲ့ modified လုပ်ထားတဲ့ modifiedText ကိုပဲ ပြန်ပေးလိုက်တယ်
+                    // အဲ့လို ပြန်လာတာဟာ map function ကို ထပ်ဖြတ်ရတဲ့အတွက် array ပြောင်းသွားတယ်
 
 
-                // parent index ရယ်၊ array အဖြစ်ပြောင်းသွားတဲ့ modifiedText ရယ်၊ မထည့်ရင် မှားကုန်နိုင်တဲ့ TypeObj (အကြီးတန်း) ရယ်၊
-                // <h1>/<h2>/<h3> စတဲ့ switch case နဲ့ ဖမ်းတာတဲ့ tag ဆုံးဖြတ်တဲ့ control flow ရယ် ကို ဖြတ်ပြီး
-                // tag ရယ် passing လုပ်လိုက်တဲ့ modified children text ကို ပေါင်းပြီး JSX အဖြစ် return ပြန်ပေးတာကို tag တစ်ခုခြင်းစီ render လုပ်တာတယ်
-                return getContentFragment(index, textChildren, typeObj, typeObj.type);
-            })}
+                    // parent index ရယ်၊ array အဖြစ်ပြောင်းသွားတဲ့ modifiedText ရယ်၊ မထည့်ရင် မှားကုန်နိုင်တဲ့ TypeObj (အကြီးတန်း) ရယ်၊
+                    // <h1>/<h2>/<h3> စတဲ့ switch case နဲ့ ဖမ်းတာတဲ့ tag ဆုံးဖြတ်တဲ့ control flow ရယ် ကို ဖြတ်ပြီး
+                    // tag ရယ် passing လုပ်လိုက်တဲ့ modified children text ကို ပေါင်းပြီး JSX အဖြစ် return ပြန်ပေးတာကို tag တစ်ခုခြင်းစီ render လုပ်တာတယ်
+                    return getContentFragment(index, textChildren, typeObj, typeObj.type);
+                })}
+            </div>
         </div>
+
     </div>;
 };
 
