@@ -5,7 +5,6 @@ import { getPosts } from "../services";
 import { FeaturedSection }  from "./../section";
 
 export default function Home({ posts }) {
-
   return (
     <div className="container mx-auto px-5 lg:px-10 mb-16">
       <Head>
@@ -35,7 +34,7 @@ export default function Home({ posts }) {
 }
 
 export const getStaticProps = async () => {
-  const posts = await getPosts() || [];
+  const posts = await (getPosts() || []);
   return {
     props: {
       posts,
