@@ -3,7 +3,7 @@
 Live Demo – https://nextjs-cms-blog-three.vercel.app/
 
 
-##CMS Blog 
+#CMS Blog 
 
 SSR အတွက် NextJs ကို အသုံးပြုပြီး ‌ရေးသားထားသော Blog website တစ်ခုဖြစ်ပါတယ်။ Data fetching အနေနဲ့ graphql ကို အသုံးပြုထားပြီး content management အတွက် graphcms ကို သုံးထားပါတယ်။
 
